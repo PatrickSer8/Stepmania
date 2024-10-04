@@ -23,8 +23,8 @@ $error = $_GET["error"];
     <div class="d-flex">
     <a href="/index.html" class="navbar-brand mb-0 h1" style="color: black; border-right: 2px solid black; padding-right: 10px; margin-right: 10px;">Pagina Principal</a>
     <a href="mvc/songform.php" class="navbar-brand mb-0 h1" style="color: black; border-right: 2px solid black; padding-right: 10px; margin-right: 10px;">Añadir Cancion</a>
-    <a href="mvc/index.php" class="navbar-brand mb-0 h1" style="color: black; border-right: 2px solid black; padding-right: 10px; margin-right: 10px;">Jugar</a>
-    <a href="mvc/index.php" class="navbar-brand mb-0 h1" style="color: black;">Clasificaciones</a>
+    <a href="mvc/songlist.php" class="navbar-brand mb-0 h1" style="color: black; border-right: 2px solid black; padding-right: 10px; margin-right: 10px;">Jugar</a>
+    <a href="mvc/clasif.php" class="navbar-brand mb-0 h1" style="color: black;">Clasificaciones</a>
     </div>
   </nav>
 
@@ -42,11 +42,11 @@ $error = $_GET["error"];
           <form action="form.php" enctype="multipart/form-data" method="post">
     <div class="form-group">
         <label for="inputtitol">Titol</label>
-        <input name="titol" type="text" class="form-control" id="inputtitol" placeholder="El nom de la canço">
+        <input name="title" type="text" class="form-control" id="inputtitol" placeholder="El nom de la canço">
     </div>
     <div class="form-group">
         <label for="inputartista">Artista</label>
-        <input name="artista" type="text" class="form-control" id="inputartista" placeholder="El nom de artista">
+        <input name="artist" type="text" class="form-control" id="inputartista" placeholder="El nom de artista">
     </div>
     <div class="form-group">
         <label for="inputmusica">Musica</label>
