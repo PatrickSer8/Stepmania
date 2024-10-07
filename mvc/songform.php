@@ -15,7 +15,7 @@ $error = $_GET["error"];
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Exemple de formulari</title>
+    <title>Afegir Canço</title>
   </head>
   <body class="d-flex flex-column min-vh-100" style="background-image: url('/img/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">  
   
@@ -35,30 +35,30 @@ $error = $_GET["error"];
           <?php if (isset($error)) {
                 ?>
           <div class="alert alert-danger" role="alert">
-            Error!!! Has d'omplir els camps.
+            Error! Rellena los campos.
           </div>
                 <?php
           }?>
           <form action="form.php" enctype="multipart/form-data" method="post">
     <div class="form-group">
-        <label for="inputtitol">Titol</label>
-        <input name="title" type="text" class="form-control" id="inputtitol" placeholder="El nom de la canço">
+        <label for="inputtitulo">Titulo</label>
+        <input name="title" type="text" class="form-control" id="inputtitol" placeholder="El nombre de la cancion">
     </div>
     <div class="form-group">
         <label for="inputartista">Artista</label>
-        <input name="artist" type="text" class="form-control" id="inputartista" placeholder="El nom de artista">
+        <input name="artist" type="text" class="form-control" id="inputartista" placeholder="El nombre del artista">
     </div>
     <div class="form-group">
         <label for="inputmusica">Musica</label>
-        <input name="music" type="file" class="form-control" id="inputmusica" placeholder="El fitxer de musica">
+        <input name="music" type="file" class="form-control" id="inputmusica" placeholder="El archivo de la musica">
     </div>
     <div class="form-group">
         <label for="inputimage">Portada</label>
         <input name="img" type="file" class="form-control" id="inputimage" placeholder="La portada">
     </div>
     <div class="form-group">
-        <label for="inputgame">Joc</label>
-        <input name="game" type="file" class="form-control" id="inputgame" placeholder="El fitxer de joc">
+        <label for="inputgame">Juego</label>
+        <input name="game" type="file" class="form-control" id="inputgame" placeholder="El archivo del juego">
     </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
           </form>

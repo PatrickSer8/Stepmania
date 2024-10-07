@@ -20,7 +20,8 @@ $data = array(
     "artist" => $_POST["artist"],
     "music" => $musicFilePath,
     "game" => $gameFilePath,
-    "img" => $imageFilePath
+    "img" => $imageFilePath,
+    "duration" => $songduration
 );
 
 $jsonData = json_decode(file_get_contents("playlist.json"), true);
