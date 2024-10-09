@@ -15,6 +15,8 @@ move_uploaded_file($_FILES["music"]["tmp_name"], "../music/" . $_FILES["music"][
 move_uploaded_file($_FILES["img"]["tmp_name"], "../img/" . $_FILES["img"]["name"]);
 move_uploaded_file($_FILES["game"]["tmp_name"], "../game/" . $_FILES["game"]["name"]);
 
+$songduration = $_POST["songduration"];
+
 $data = array(
     "title" => $_POST["title"],
     "artist" => $_POST["artist"],

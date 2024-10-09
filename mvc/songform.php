@@ -50,7 +50,7 @@ $error = $_GET["error"];
     </div>
     <div class="form-group">
         <label for="inputmusica">Musica</label>
-        <input name="music" type="file" class="form-control" id="inputmusica" placeholder="El archivo de la musica">
+        <input name="music" type="file" class="form-control" id="inputmusica" placeholder="El archivo de la musica" onchange="getAudioDuration(event)">
     </div>
     <div class="form-group">
         <label for="inputimage">Portada</label>
@@ -60,6 +60,7 @@ $error = $_GET["error"];
         <label for="inputgame">Juego</label>
         <input name="game" type="file" class="form-control" id="inputgame" placeholder="El archivo del juego">
     </div>
+    <input type="hidden" id="songduration" name="songduration" value="">
     <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
 
@@ -82,3 +83,18 @@ $error = $_GET["error"];
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
 </html>
+<script>
+    function getAudioDuration(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const audio = new Audio(URL.createObjectURL(file));
+            audio.onloadedmetadata = function() {
+              const minutes = Math.floor(audio.duration / 60);
+              const seconds = Math.floor(audio.duration % 60);
+              const timef = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+              document.getElementById("songduration").value = timef;
+            };
+        }
+    }
+</script>

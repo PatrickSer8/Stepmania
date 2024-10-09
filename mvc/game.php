@@ -4,13 +4,6 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "config.php";
 $error = $_GET["error"];
 
-$json_data = file_get_contents('playlist.json');
-$playlist = json_decode($json_data, true);
-
-usort($playlist['songs'], function($a, $b) {
-  return strcasecmp($a['title'], $b['title']);
-});
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,7 +15,7 @@ usort($playlist['songs'], function($a, $b) {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Lista</title>
+    <title>StepMania!!!</title>
   </head>
   <body class="d-flex flex-column min-vh-100" style="background-image: url('/img/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">  
   
@@ -35,20 +28,21 @@ usort($playlist['songs'], function($a, $b) {
     </div>
   </nav>
 
-  <div class="container mt-5 flex-grow-1">
+  <div class="container mt-4 flex-grow-1">
     <div class="row justify-content-center">
-      <div class="col-10 text-center p-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
-        <h1 class="display-4 mb-4">Lista de Canciones</h1>
-  
-          <div class="list-group" style="max-height: 344px; overflow-y: auto; padding-right: 10px;">
-            <?php foreach ($playlist['songs'] as $song): ?>
-              <a href="/mvc/game.php" class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;">
-                <img src="<?php echo $song['img']; ?>" alt="SongImg" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 10px;">
-                <strong style="font-size:x-large;"><?php echo $song['title']; ?></strong> por <?php echo $song['artist']; ?> <?php echo $song['duration']; ?>
-              </a>
-            <?php endforeach; ?>
-          </div>
-
+      <div class="col-12 text-center p-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
+      <div class="d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
+        <div class="mb-3 mb-md-0" style="max-width: 200px;">
+          <h1 class="display-4 mb-1">Cancions</h1>
+          <h3 class="mb-1">Artista</h3>
+        </div>
+        <div class="mx-md-5">
+          <img src="/img/Cfdfdfaptura.PNG" alt="SongImg" style="width: 500px; height: 250px; border-radius: 10px;">       
+        </div>
+        <div class="mb-3 mb-md-0" style="max-width: 200px;">
+          <h1 class="display-4 mb-1">Puntos: 1000000</h1>
+        </div>
+      </div> 
       </div>
     </div>
   </div>
