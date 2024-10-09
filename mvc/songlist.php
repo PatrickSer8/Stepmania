@@ -7,6 +7,10 @@ $error = $_GET["error"];
 $json_data = file_get_contents('playlist.json');
 $playlist = json_decode($json_data, true);
 
+usort($playlist['songs'], function($a, $b) {
+  return strcmp($a['title'], $b['title']);
+});
+
 ?>
 <!doctype html>
 <html lang="en">
