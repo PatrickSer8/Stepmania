@@ -52,16 +52,16 @@ $song = json_decode($_POST['song'], true);
       <h2 class="mb-1">Pulsa las teclas cuando brillen!!!</h2>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
-          <img id="left-on" onclick="left()" src="../img/left.png" alt="arrow" style="width: 200px; height: 200px;">       
+          <img id="left-on" onkeypress="left()" src="../img/left.png" alt="arrow" style="width: 200px; height: 200px;">       
         </div>
         <div class="mx-md-0">
-          <img id="up-on" onclick="up()" src="../img/up.png" alt="arrow" style="width: 200px; height: 200px;">       
+          <img id="up-on" onkeypress="up()" src="../img/up.png" alt="arrow" style="width: 200px; height: 200px;">       
         </div>
         <div class="mb-md-0">
-          <img id="down-on" onclick="down()" src="../img/down.png" alt="arrow" style="width: 200px; height: 200px;">       
+          <img id="down-on" onkeypress="down()" src="../img/down.png" alt="arrow" style="width: 200px; height: 200px;">       
         </div>
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
-          <img id="right-on" onclick="right()" src="../img/right.png" alt="arrow" style="width: 200px; height: 200px;">       
+          <img id="right-on" onkeypress="right()" src="../img/right.png" alt="arrow" style="width: 200px; height: 200px;">       
         </div>
       </div>
       <div>
@@ -136,7 +136,48 @@ $song = json_decode($_POST['song'], true);
     }
     rightPressed = !rightPressed;
   }
+  
+  document.addEventListener('keydown', (event) => {
+    switch (event.key) {
+      case 'ArrowLeft':
+      case 'a':  
+        left();
+        break;
+      case 'ArrowUp':
+      case 'w':
+        up();
+        break;
+      case 'ArrowDown':
+      case 's':
+        down();
+        break;
+      case 'ArrowRight':
+      case 'd':
+        right();
+        break;
+    }
+  });
 
+  document.addEventListener('keyup', (event) => {
+    switch (event.key) {
+      case 'ArrowLeft':
+      case 'a':  
+        left();
+        break;
+      case 'ArrowUp':
+      case 'w':
+        up();
+        break;
+      case 'ArrowDown':
+      case 's':
+        down();
+        break;
+      case 'ArrowRight':
+      case 'd':
+        right();
+        break;
+    }
+  });
 
   audio.addEventListener('timeupdate', () => {
     const currentTime = audio.currentTime;
