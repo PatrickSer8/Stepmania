@@ -30,7 +30,7 @@ $error = $_GET["error"];
 
   <div class="container mt-5 flex-grow-1">
     <div class="row justify-content-center">
-      <div class="col-10 text-center p-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
+      <div class="col-10 text-center p-5 mb-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
         <h1 class="display-4 mb-4">Añadir Cancion</h1>
           <?php if (isset($error)) {
                 ?>

@@ -1,6 +1,5 @@
 <?php
 
- 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "config.php";
 $error = $_GET["error"];
@@ -37,7 +36,7 @@ $song = json_decode($_POST['song'], true);
 
   <div class="container mt-4 flex-grow-1">
     <div class="row justify-content-center">
-      <div class="col-12 text-center p-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
+      <div class="mb-1 col-12 text-center p-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px; max-height: 590px;">
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
           <h1 class="display-4 mb-1"><?php echo $songTitle; ?></h1>
@@ -51,13 +50,27 @@ $song = json_decode($_POST['song'], true);
         </div>
       </div> 
       <h2 class="mb-1">Pulsa las teclas cuando brillen!!!</h2>
+      <div class="d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
+        <div class="mb-3 mb-md-0" style="max-width: 200px;">
+          <img src="../img/left.png" alt="arrow" style="width: 200px; height: 200px;">       
+        </div>
+        <div class="mx-md-0">
+          <img src="../img/up.png" alt="arrow" style="width: 200px; height: 200px;">       
+        </div>
+        <div class="mb-md-0">
+          <img src="../img/down.png" alt="arrow" style="width: 200px; height: 200px;">       
+        </div>
+        <div class="mb-3 mb-md-0" style="max-width: 200px;">
+          <img src="../img/right.png" alt="arrow" style="width: 200px; height: 200px;">       
+        </div>
+      </div>
       <div>
                 <span id="current-time">0:00</span> / <span id="cancion-duration">0:00</span>
             </div>
             <div style="width:80%; height: 6px; background-color: #a3e6ff; margin-left: 10%; border: 1px solid blue;" id="cancion-progress-conten">
                 <div style="height: 100%; background-color: #0044ff; width: 0;" id="cancion-progress"></div>
             </div>
-      </div>
+      </div> 
     </div>
   </div>
 
@@ -78,7 +91,7 @@ $song = json_decode($_POST['song'], true);
 </html>
 <script>
 
-  var audio = new Audio("<?php echo $songMusic; ?>");
+  var audio = new Audio("<?php echo $songMusi; ?>");
   audio.play();
 
   audio.addEventListener('timeupdate', () => {
