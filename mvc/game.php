@@ -52,16 +52,16 @@ $song = json_decode($_POST['song'], true);
       <h2 class="mb-1">Pulsa las teclas cuando brillen!!!</h2>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
-          <img src="../img/left.png" alt="arrow" style="width: 200px; height: 200px;">       
+          <img id="left-on" onclick="left()" src="../img/left.png" alt="arrow" style="width: 200px; height: 200px;">       
         </div>
         <div class="mx-md-0">
-          <img src="../img/up.png" alt="arrow" style="width: 200px; height: 200px;">       
+          <img id="up-on" onclick="up()" src="../img/up.png" alt="arrow" style="width: 200px; height: 200px;">       
         </div>
         <div class="mb-md-0">
-          <img src="../img/down.png" alt="arrow" style="width: 200px; height: 200px;">       
+          <img id="down-on" onclick="down()" src="../img/down.png" alt="arrow" style="width: 200px; height: 200px;">       
         </div>
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
-          <img src="../img/right.png" alt="arrow" style="width: 200px; height: 200px;">       
+          <img id="right-on" onclick="right()" src="../img/right.png" alt="arrow" style="width: 200px; height: 200px;">       
         </div>
       </div>
       <div>
@@ -90,9 +90,53 @@ $song = json_decode($_POST['song'], true);
   </body>
 </html>
 <script>
-
-  var audio = new Audio("<?php echo $songMusi; ?>");
+  var audio = new Audio("<?php echo $songMusic; ?>");
   audio.play();
+
+  let leftPressed = false;
+  function left() {
+    const leftImage = document.getElementById('left-on');
+    if (leftPressed) {
+      leftImage.src = '../img/left.png'; 
+    } else {
+      leftImage.src = '../img/ArrowLeftPress.png'; 
+    }
+    leftPressed = !leftPressed;
+  }
+
+  let upPressed = false;
+  function up() {
+    const upImage = document.getElementById('up-on');
+    if (upPressed) {
+      upImage.src = '../img/up.png'; 
+    } else {
+      upImage.src = '../img/ArrowUpPress.png'; 
+    }
+    upPressed = !upPressed;
+  }
+
+  let downPressed = false;
+  function down() {
+    const downImage = document.getElementById('down-on');
+    if (downPressed) {
+      downImage.src = '../img/down.png'; 
+    } else {
+      downImage.src = '../img/ArrowDownPress.png'; 
+    }
+    downPressed = !downPressed;
+  }
+
+  let rightPressed = false;
+  function right() {
+    const rightImage = document.getElementById('right-on');
+    if (rightPressed) {
+      rightImage.src = '../img/right.png'; 
+    } else {
+      rightImage.src = '../img/ArrowRightPress.png'; 
+    }
+    rightPressed = !rightPressed;
+  }
+
 
   audio.addEventListener('timeupdate', () => {
     const currentTime = audio.currentTime;
