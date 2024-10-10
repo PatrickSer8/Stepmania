@@ -1,9 +1,16 @@
 <?php
 
+ 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "config.php";
 $error = $_GET["error"];
 
+$song = json_decode($_POST['song'], true); 
+    $songTitle = $song['title'];
+    $songArtist = $song['artist'];
+    $songMusic = $song['music'];
+    $songDuration = $song['duration'];
+    $songImg = $song['img'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,16 +40,23 @@ $error = $_GET["error"];
       <div class="col-12 text-center p-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
-          <h1 class="display-4 mb-1">Cancions</h1>
-          <h3 class="mb-1">Artista</h3>
+          <h1 class="display-4 mb-1"><?php echo $songTitle; ?></h1>
+          <h3 class="mb-1"><?php echo $songArtist; ?></h3>
         </div>
         <div class="mx-md-5">
-          <img src="/img/Cfdfdfaptura.PNG" alt="SongImg" style="width: 500px; height: 250px; border-radius: 10px;">       
+          <img src="<?php echo $songImg; ?>" alt="SongImg" style="border: 2px solid black; width: 500px; height: 250px; border-radius: 10px;">       
         </div>
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
           <h1 class="display-4 mb-1">Puntos: 1000000</h1>
         </div>
       </div> 
+      <h2 class="mb-1">Pulsa las teclas cuando brillen!!!</h2>
+      <div>
+                <span id="current-time">0:00</span> / <span id="cancion-duration">0:00</span>
+            </div>
+            <div style="width:80%; height: 6px; background-color: #a3e6ff; margin-left: 10%; border: 1px solid blue;" id="cancion-progress-conten">
+                <div style="height: 100%; background-color: #0044ff; width: 0;" id="cancion-progress"></div>
+            </div>
       </div>
     </div>
   </div>
@@ -62,3 +76,29 @@ $error = $_GET["error"];
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
 </html>
+<script>
+
+  var audio = new Audio("<?php echo $songMusic; ?>");
+  audio.play();
+
+  audio.addEventListener('timeupdate', () => {
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
+    const progress = (currentTime / duration) * 100;
+
+    const progressBar = document.getElementById('cancion-progress');
+    progressBar.style.width = progress + '%';
+
+    const currentTimeDisplay = document.getElementById('current-time');
+    const durationDisplay = document.getElementById('cancion-duration');
+    currentTimeDisplay.textContent = formatTime(currentTime);
+    durationDisplay.textContent = formatTime(duration);
+});
+
+function formatTime(timeInSeconds) {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = Math.floor(timeInSeconds % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+</script>

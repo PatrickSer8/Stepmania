@@ -41,11 +41,19 @@ usort($playlist['songs'], function($a, $b) {
         <h1 class="display-4 mb-4">Lista de Canciones</h1>
   
           <div class="list-group" style="max-height: 344px; overflow-y: auto; padding-right: 10px;">
+            <!-- Song list Cycles songs -->
             <?php foreach ($playlist['songs'] as $song): ?>
-              <a href="/mvc/game.php" class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;">
-                <img src="<?php echo $song['img']; ?>" alt="SongImg" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 10px;">
-                <strong style="font-size:x-large;"><?php echo $song['title']; ?></strong> por <?php echo $song['artist']; ?> <?php echo $song['duration']; ?>
+              <!-- Buton that redirects to form -->
+              <a href="/mvc/game.php" class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;"
+              onclick="event.preventDefault(); document.getElementById('songForm<?php echo $song['game']; ?>').submit();">
+              <!-- Info of the songs -->
+              <img src="<?php echo $song['img']; ?>" alt="SongImg" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 10px;">
+              <strong style="font-size:x-large;"><?php echo $song['title']; ?></strong> por <?php echo $song['artist']; ?> <?php echo $song['duration']; ?>
               </a>
+              <!-- Form that sends the info to game.php -->
+              <form id="songForm<?php echo $song['game']; ?>" action="/mvc/game.php" method="POST" style="display: none;">
+                <input type="hidden" name="song" value='<?php echo json_encode($song); ?>'>
+              </form>
             <?php endforeach; ?>
           </div>
 

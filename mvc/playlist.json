@@ -1,113 +1,52 @@
 {
     "songs": [
         {
-            "title": "Parenre",
-            "artist": "asdddddddfdddd",
+            "title": "Patata",
+            "artist": "tuberculo",
             "music": "../music/metalpipe.mp3",
-            "game": "../game/github-recovery-codes.txt",
-            "img": "../img/Cfdfdfaptura.PNG"
+            "game": "../game/listajefefinaltochisima.txt",
+            "img": "../img/Cfdfdfaptura.PNG",
+            "duration": "0:02"
         },
         {
-            "title": "PAPAPAPAPA",
-            "artist": "PASPdpaspdsad",
+            "title": "Trapezio",
+            "artist": "geometria",
             "music": "../music/argue.mp3",
             "game": "../game/listilla.txt",
             "img": "../img/jijijij.PNG",
-            "duration": null
-        },
-        {
-            "title": "Parenre",
-            "artist": "asdddddddfdddd",
-            "music": "../music/metalpipe.mp3",
-            "game": "../game/github-recovery-codes.txt",
-            "img": "../img/Cfdfdfaptura.PNG"
-        },
-        {
-            "title": "Parenre",
-            "artist": "asdddddddfdddd",
-            "music": "../music/metalpipe.mp3",
-            "game": "../game/github-recovery-codes.txt",
-            "img": "../img/Cfdfdfaptura.PNG"
-        },
-        {
-            "title": "Lalalala",
-            "artist": "asda",
-            "music": "../music/metalpipe.mp3",
-            "game": "../game/github-recovery-codes.txt",
-            "img": "../img/tumblr_0c49f6f58ce5f359814e017de0b40d5c_ea1bbf1d_540.jpg",
-            "duration": null
-        },
-        {
-            "title": "Lalalala",
-            "artist": "asda",
-            "music": "../music/metalpipe.mp3",
-            "game": "../game/github-recovery-codes.txt",
-            "img": "../img/tumblr_0c49f6f58ce5f359814e017de0b40d5c_ea1bbf1d_540.jpg",
-            "duration": null
-        },
-        {
-            "title": "dsadsadsa",
-            "artist": "asdddddddfdddd",
-            "music": "../music/argue.mp3",
-            "game": "../game/listilla.txt",
-            "img": "../img/jijijij.PNG",
-            "duration": null
-        },
-        {
-            "title": "dsadsadsa",
-            "artist": "asdddddddfdddd",
-            "music": "../music/argue.mp3",
-            "game": "../game/listilla.txt",
-            "img": "../img/jijijij.PNG",
-            "duration": null
-        },
-        {
-            "title": "dasdsad",
-            "artist": "dsdsadasd",
-            "music": "../music/argue.mp3",
-            "game": "../game/listilla.txt",
-            "img": "../img/jijijij.PNG",
-            "duration": "123.336"
-        },
-        {
-            "title": "sadasdsdd",
-            "artist": "ddasdasd",
-            "music": "../music/metalpipe.mp3",
-            "game": "../game/listilla.txt",
-            "img": "../img/jijijij.PNG",
-            "duration": "2.784"
-        },
-        {
-            "title": "asdasd",
-            "artist": "sadasd",
-            "music": "../music/metalpipe.mp3",
-            "game": "../game/listilla.txt",
-            "img": "../img/jijijij.PNG",
-            "duration": "2.784"
-        },
-        {
-            "title": "asdasd",
-            "artist": "sadasd",
-            "music": "../music/argue.mp3",
-            "game": "../game/listilla.txt",
-            "img": "../img/jijijij.PNG",
-            "duration": "123.336"
-        },
-        {
-            "title": "asdasd",
-            "artist": "asdasd",
-            "music": "../music/argue.mp3",
-            "game": "../game/listilla.txt",
-            "img": "../img/tumblr_0c49f6f58ce5f359814e017de0b40d5c_ea1bbf1d_540.jpg",
-            "duration": ""
-        },
-        {
-            "title": "asdasd",
-            "artist": "",
-            "music": "../music/argue.mp3",
-            "game": "../game/listilla.txt",
-            "img": "../img/tumblr_0c49f6f58ce5f359814e017de0b40d5c_ea1bbf1d_540.jpg",
             "duration": "2:03"
+        },
+        {
+            "title": "Bilingue",
+            "artist": "frances",
+            "music": "../music/onlymp3.to - Pokemon Ranger Guardian Signs - Pokemon Pincher Admin Encounter-daimpxnj13c-256k-1656779294209.mp3",
+            "game": "../game/github-recovery-codes.txt",
+            "img": "../img/tumblr_0c49f6f58ce5f359814e017de0b40d5c_ea1bbf1d_540.jpg",
+            "duration": "1:55"
+        },
+        {
+            "title": "Patata",
+            "artist": "tuberculo",
+            "music": "../music/metalpipe.mp3",
+            "game": "../game/listajefefinaltochisima.txt",
+            "img": "../img/Cfdfdfaptura.PNG",
+            "duration": "0:02"
+        },
+        {
+            "title": "Trapezio",
+            "artist": "geometria",
+            "music": "../music/argue.mp3",
+            "game": "../game/listilla.txt",
+            "img": "../img/jijijij.PNG",
+            "duration": "2:03"
+        },
+        {
+            "title": "Bilingue",
+            "artist": "frances",
+            "music": "../music/onlymp3.to - Pokemon Ranger Guardian Signs - Pokemon Pincher Admin Encounter-daimpxnj13c-256k-1656779294209.mp3",
+            "game": "../game/github-recovery-codes.txt",
+            "img": "../img/tumblr_0c49f6f58ce5f359814e017de0b40d5c_ea1bbf1d_540.jpg",
+            "duration": "1:55"
         }
     ]
 }
