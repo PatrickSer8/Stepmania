@@ -46,7 +46,7 @@ $song = json_decode($_POST['song'], true);
           <img src="<?php echo $songImg; ?>" alt="SongImg" style="border: 2px solid black; width: 500px; height: 250px; border-radius: 10px;">       
         </div>
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
-          <h1 class="display-4 mb-1">Puntos: 1000000</h1>
+          <h1 class="display-4 mb-1">Puntos: <span id="points-display"></span></h1>
         </div>
       </div> 
       <h2 class="mb-1">Pulsa las teclas que brillen!</h2>
@@ -93,8 +93,28 @@ $song = json_decode($_POST['song'], true);
   var audio = new Audio("<?php echo $songMusic; ?>");
   audio.play();
 
+  var keypressed = "non";
+  function non() {
+    keypressed = "non";
+  }
+
+  var points = 0;
+  document.getElementById('points-display').textContent = points; 
+  function updatePoints() {
+    document.getElementById('points-display').textContent = points;
+  }
+
   let leftPressed = false;
   function left() {
+    if (keypressed == "left") {
+      points += 100;
+      updatePoints();
+      non();    
+    } else if (keypressed != "non") {
+      points -= 50;
+      updatePoints();
+      non();
+    }
     const leftImage = document.getElementById('left-on');
     if (leftPressed) {
       leftImage.src = '../img/left.png'; 
@@ -106,6 +126,15 @@ $song = json_decode($_POST['song'], true);
 
   let upPressed = false;
   function up() {
+    if (keypressed == "up") {
+      points += 100;
+      updatePoints();
+      non();    
+    } else if (keypressed != "non") {
+      points -= 50;
+      updatePoints();
+      non();
+    }
     const upImage = document.getElementById('up-on');
     if (upPressed) {
       upImage.src = '../img/up.png'; 
@@ -117,6 +146,15 @@ $song = json_decode($_POST['song'], true);
 
   let downPressed = false;
   function down() {
+    if (keypressed == "down") {
+      points += 100;
+      updatePoints();
+      non();    
+    } else if (keypressed != "non") {
+      points -= 50;
+      updatePoints();
+      non();
+    }
     const downImage = document.getElementById('down-on');
     if (downPressed) {
       downImage.src = '../img/down.png'; 
@@ -128,6 +166,15 @@ $song = json_decode($_POST['song'], true);
 
   let rightPressed = false;
   function right() {
+    if (keypressed == "right") {
+      points += 100;
+      updatePoints();
+      non();    
+    } else if (keypressed != "non") {
+      points -= 50;
+      updatePoints();
+      non();
+    }
     const rightImage = document.getElementById('right-on');
     if (rightPressed) {
       rightImage.src = '../img/right.png'; 
@@ -139,29 +186,49 @@ $song = json_decode($_POST['song'], true);
 
   function leftnote() {
     document.getElementById('left-on').src = '../img/ArrowLeftPress.png';
+    keypressed = 'left';
   }
-
   function upnote() {
     document.getElementById('up-on').src = '../img/ArrowUpPress.png';
+    keypressed = 'up';
   }
-
   function downnote() {
     document.getElementById('down-on').src = '../img/ArrowDownPress.png';
+    keypressed = 'down';
   }
-
   function rightnote() {
     document.getElementById('right-on').src = '../img/ArrowRightPress.png';
+    keypressed = 'right';
   }
 
+  function leftnotemiss() {
+    document.getElementById('left-on').src = '../img/left.png';
+    non();
+  }
+  function upnotemiss() {
+    document.getElementById('up-on').src = '../img/up.png';
+    non();
+  }
+  function downnotemiss() {
+    document.getElementById('down-on').src = '../img/down.png';
+    non();
+  }
+  function rightnotemiss() {
+    document.getElementById('right-on').src = '../img/right.png';
+    non();
+  }
+  
   setTimeout(leftnote, 1000)
-  setTimeout(upnote, 2000)
-  setTimeout(downnote, 3000)
-  setTimeout(rightnote, 4000)
+  setTimeout(leftnotemiss, 2000)
 
-  setTimeout(leftnote, 2000)
-  setTimeout(upnote, 3000)
-  setTimeout(downnote, 4000)
-  setTimeout(rightnote, 5000)
+  setTimeout(upnote, 2000)
+  setTimeout(upnotemiss, 3000)
+
+  setTimeout(downnote, 3000)
+  setTimeout(downnotemiss, 4000)
+
+  setTimeout(rightnote, 4000)
+  setTimeout(rightnotemiss, 5000)
 
   document.addEventListener('keydown', (event) => {
     switch (event.key) {
