@@ -8,8 +8,13 @@ $song = json_decode($_POST['song'], true);
     $songTitle = $song['title'];
     $songArtist = $song['artist'];
     $songMusic = $song['music'];
+    $songGame = $song['game'];
     $songDuration = $song['duration'];
     $songImg = $song['img'];
+
+    $songGameContent = "";
+    $songGameContent = file_get_contents($songGame);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -91,7 +96,11 @@ $song = json_decode($_POST['song'], true);
 </html>
 <script>
   var audio = new Audio("<?php echo $songMusic; ?>");
-  audio.play();
+  
+  function playsong() {
+    audio.play();
+    startgame();}
+  document.addEventListener('click',playsong)
 
   var keypressed = "non";
   function non() {
@@ -234,17 +243,54 @@ $song = json_decode($_POST['song'], true);
     non();
   }
   
-  setTimeout(leftnote, 1000)
-  setTimeout(leftnotemiss, 2000)
+  function NoteOnIdent(note) {
+      switch(note) {
+        case 99:
+          leftnote();
+          break;
+        case 97:
+          upnote();
+          break;
+        case 114:
+          downnote();
+          break;
+        case 100:
+          rightnote();
+          break;
+      }
+    }
+    function NoteOffIdent(note) {
+      switch(note) {
+        case 99:
+          leftnotemiss();
+          break;
+        case 97:
+          upnotemiss();
+          break;
+        case 114:
+          downnotemiss();
+          break;
+        case 100:
+          rightnotemiss();
+          break;
+      }
+    }
 
-  setTimeout(upnote, 2000)
-  setTimeout(upnotemiss, 3000)
-
-  setTimeout(downnote, 3000)
-  setTimeout(downnotemiss, 4000)
-
-  setTimeout(rightnote, 4000)
-  setTimeout(rightnotemiss, 5000)
+  var gameContent = `<?php echo $songGameContent; ?>`.trim();
+  let gameLines = gameContent.split('\n');  
+  let numberOfNotes = parseInt(gameLines[0]);
+  let notes = [];
+  for (let i = 1; i <= numberOfNotes; i++) {
+      let [note, on, off] = gameLines[i].split('#').map(value => parseFloat(value.trim()));
+      notes.push({ note: note, on: on, off: off });
+  }
+  
+  function startgame() {
+      notes.forEach((noteObj) => {
+        setTimeout(() => NoteOnIdent(noteObj.note), noteObj.on * 1000);
+        setTimeout(() => NoteOffIdent(noteObj.note), noteObj.off * 1000);
+      });
+    }
 
   document.addEventListener('keydown', (event) => {
     switch (event.key) {
