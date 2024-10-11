@@ -49,7 +49,7 @@ $song = json_decode($_POST['song'], true);
           <h1 class="display-4 mb-1">Puntos: 1000000</h1>
         </div>
       </div> 
-      <h2 class="mb-1">Pulsa las teclas cuando brillen!!!</h2>
+      <h2 class="mb-1">Pulsa las teclas que brillen!</h2>
       <div class="d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
         <div class="mb-3 mb-md-0" style="max-width: 200px;">
           <img id="left-on" onkeypress="left()" src="../img/left.png" alt="arrow" style="width: 200px; height: 200px;">       
@@ -99,7 +99,7 @@ $song = json_decode($_POST['song'], true);
     if (leftPressed) {
       leftImage.src = '../img/left.png'; 
     } else {
-      leftImage.src = '../img/ArrowLeftPress.png'; 
+      leftImage.src = '../img/LeftHit.png'; 
     }
     leftPressed = !leftPressed;
   }
@@ -110,7 +110,7 @@ $song = json_decode($_POST['song'], true);
     if (upPressed) {
       upImage.src = '../img/up.png'; 
     } else {
-      upImage.src = '../img/ArrowUpPress.png'; 
+      upImage.src = '../img/UpHit.png'; 
     }
     upPressed = !upPressed;
   }
@@ -121,7 +121,7 @@ $song = json_decode($_POST['song'], true);
     if (downPressed) {
       downImage.src = '../img/down.png'; 
     } else {
-      downImage.src = '../img/ArrowDownPress.png'; 
+      downImage.src = '../img/DownHit.png'; 
     }
     downPressed = !downPressed;
   }
@@ -132,7 +132,7 @@ $song = json_decode($_POST['song'], true);
     if (rightPressed) {
       rightImage.src = '../img/right.png'; 
     } else {
-      rightImage.src = '../img/ArrowRightPress.png'; 
+      rightImage.src = '../img/RightHit.png'; 
     }
     rightPressed = !rightPressed;
   }
