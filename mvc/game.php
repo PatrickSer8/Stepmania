@@ -113,6 +113,10 @@ $song = json_decode($_POST['song'], true);
     } else if (keypressed != "non") {
       points -= 50;
       updatePoints();
+      document.getElementById('left-on').src = '../img/left.png';    
+      document.getElementById('up-on').src = '../img/up.png';
+      document.getElementById('right-on').src = '../img/right.png';
+      document.getElementById('down-on').src = '../img/down.png';
       non();
     }
     const leftImage = document.getElementById('left-on');
@@ -133,6 +137,10 @@ $song = json_decode($_POST['song'], true);
     } else if (keypressed != "non") {
       points -= 50;
       updatePoints();
+      document.getElementById('left-on').src = '../img/left.png';    
+      document.getElementById('up-on').src = '../img/up.png';
+      document.getElementById('right-on').src = '../img/right.png';
+      document.getElementById('down-on').src = '../img/down.png';
       non();
     }
     const upImage = document.getElementById('up-on');
@@ -153,6 +161,10 @@ $song = json_decode($_POST['song'], true);
     } else if (keypressed != "non") {
       points -= 50;
       updatePoints();
+      document.getElementById('left-on').src = '../img/left.png';    
+      document.getElementById('up-on').src = '../img/up.png';
+      document.getElementById('right-on').src = '../img/right.png';
+      document.getElementById('down-on').src = '../img/down.png';
       non();
     }
     const downImage = document.getElementById('down-on');
@@ -173,6 +185,10 @@ $song = json_decode($_POST['song'], true);
     } else if (keypressed != "non") {
       points -= 50;
       updatePoints();
+      document.getElementById('left-on').src = '../img/left.png';    
+      document.getElementById('up-on').src = '../img/up.png';
+      document.getElementById('right-on').src = '../img/right.png';
+      document.getElementById('down-on').src = '../img/down.png';
       non();
     }
     const rightImage = document.getElementById('right-on');
