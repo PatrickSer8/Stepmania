@@ -1,7 +1,7 @@
 {
     "songs": [
         {
-            "title": "Patata",
+            "title": "Patatas Fritas",
             "artist": "tuberculo",
             "music": "../music/metalpipe.mp3",
             "game": "../game/listajefefinaltochisima.txt",
@@ -25,7 +25,7 @@
             "duration": "1:55"
         },
         {
-            "title": "Patata",
+            "title": "Patatas Fritas",
             "artist": "tuberculo",
             "music": "../music/metalpipe.mp3",
             "game": "../game/listajefefinaltochisima.txt",

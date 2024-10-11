@@ -136,7 +136,33 @@ $song = json_decode($_POST['song'], true);
     }
     rightPressed = !rightPressed;
   }
-  
+
+  function leftnote() {
+    document.getElementById('left-on').src = '../img/ArrowLeftPress.png';
+  }
+
+  function upnote() {
+    document.getElementById('up-on').src = '../img/ArrowUpPress.png';
+  }
+
+  function downnote() {
+    document.getElementById('down-on').src = '../img/ArrowDownPress.png';
+  }
+
+  function rightnote() {
+    document.getElementById('right-on').src = '../img/ArrowRightPress.png';
+  }
+
+  setTimeout(leftnote, 1000)
+  setTimeout(upnote, 2000)
+  setTimeout(downnote, 3000)
+  setTimeout(rightnote, 4000)
+
+  setTimeout(leftnote, 2000)
+  setTimeout(upnote, 3000)
+  setTimeout(downnote, 4000)
+  setTimeout(rightnote, 5000)
+
   document.addEventListener('keydown', (event) => {
     switch (event.key) {
       case 'ArrowLeft':
