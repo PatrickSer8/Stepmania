@@ -95,11 +95,15 @@ $song = json_decode($_POST['song'], true);
   </body>
 </html>
 <script>
-  var audio = new Audio("<?php echo $songMusic; ?>");
-  
+  var audio = new Audio("<?php echo $songMusi; ?>");
+  var playrepeat = "yes";
+
   function playsong() {
+    if(playrepeat == "yes") {
     audio.play();
-    startgame();}
+    startgame();
+    playrepeat = "no";}}
+
   document.addEventListener('click',playsong)
 
   var keypressed = "non";
