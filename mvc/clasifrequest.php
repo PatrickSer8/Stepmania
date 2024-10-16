@@ -1,8 +1,10 @@
 <?php
 
+session_start();
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "config.php";
 $error = $_GET["error"];
+$points = $_POST['points'];
 
 ?>
 <!doctype html>
@@ -15,7 +17,7 @@ $error = $_GET["error"];
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Afegir Canço</title>
+    <title>Clasificaciones</title>
   </head>
   <body class="d-flex flex-column min-vh-100" style="background-image: url('/img/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">  
   
@@ -31,38 +33,8 @@ $error = $_GET["error"];
   <div class="container mt-5 flex-grow-1">
     <div class="row justify-content-center">
       <div class="col-10 text-center p-5 mb-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
-        <h1 class="display-4 mb-4">Añadir Cancion</h1>
-          <?php if (isset($error)) {
-                ?>
-          <div class="alert alert-danger" role="alert">
-            Error! Rellena los campos.
-          </div>
-                <?php
-          }?>
-          <form action="form.php" enctype="multipart/form-data" method="post">
-    <div class="form-group">
-        <label for="inputtitulo">Titulo</label>
-        <input name="title" type="text" class="form-control" id="inputtitol" placeholder="El nombre de la cancion">
-    </div>
-    <div class="form-group">
-        <label for="inputartista">Artista</label>
-        <input name="artist" type="text" class="form-control" id="inputartista" placeholder="El nombre del artista">
-    </div>
-    <div class="form-group">
-        <label for="inputmusica">Musica</label>
-        <input name="music" type="file" class="form-control" id="inputmusica" placeholder="El archivo de la musica" onchange="getAudioDuration(event)">
-    </div>
-    <div class="form-group">
-        <label for="inputimage">Portada</label>
-        <input name="img" type="file" class="form-control" id="inputimage" placeholder="La portada">
-    </div>
-    <div class="form-group">
-        <label for="inputgame">Juego</label>
-        <input name="game" type="file" class="form-control" id="inputgame" placeholder="El archivo del juego">
-    </div>
-    <input type="hidden" id="songduration" name="songduration" value="">
-    <button href="/mvc/songlist.php" type="submit" class="btn btn-primary">Enviar</button>
-          </form>
+        <h1 class="display-4 mb-4">Guarda Tu Puntuacion!</h1>
+          
 
       </div>
     </div>
