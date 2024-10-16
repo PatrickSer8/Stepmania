@@ -1,7 +1,6 @@
 <?php
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-include "config.php";
 $error = $_GET["error"];
 
 $song = json_decode($_POST['song'], true); 
@@ -29,7 +28,10 @@ $song = json_decode($_POST['song'], true);
     <title>StepMania!!!</title>
   </head>
   <body class="d-flex flex-column min-vh-100" style="background-image: url('/img/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">  
-  <a id="clasif" href="clasifrequest.php" style="display: none;"></a>
+  <form id="clasif" action="clasifrequest.php" method="POST" style="display: none;">
+    <input id="points-input" type="hidden" name="points">
+    <input id="song-title" type="hidden" name="song">
+  </form>
   <nav class="navbar navbar-dark justify-content-md-center" style="background-color: #E6E6E6; border: 3px solid black; padding: 20px 0;">
     <div class="d-flex">
     <a href="/index.html" class="navbar-brand mb-0 h1" style="color: black; border-right: 2px solid black; padding-right: 10px; margin-right: 10px;">Pagina Principal</a>
@@ -114,6 +116,7 @@ $song = json_decode($_POST['song'], true);
   var points = 0;
   document.getElementById('points-display').textContent = points; 
   function updatePoints() {
+    document.getElementById('points-input').value = points;
     document.getElementById('points-display').textContent = points;
   }
 
@@ -350,10 +353,12 @@ $song = json_decode($_POST['song'], true);
     const durationDisplay = document.getElementById('cancion-duration');
     currentTimeDisplay.textContent = formatTime(currentTime);
     durationDisplay.textContent = formatTime(duration);
+
     if (currentTime >= duration) {
-        document.getElementById('<?php echo $song['points']; ?>').submit();
-        document.getElementById('clasif').click();
-    }
+    document.getElementById('song-title').value = "<?php echo $songTitle; ?>";
+    event.preventDefault(); 
+    document.getElementById('clasif').submit();    
+  }
 });
 
 function formatTime(timeInSeconds) {

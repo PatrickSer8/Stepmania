@@ -1,23 +1,15 @@
 <?php
 
-session_start();
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
+include "config.php";
 $error = $_GET["error"];
-$points = $_POST['points'];
-$song = $_POST['song'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_POST['name'])) {
-  $name = $_POST['name'];
+$json_data = file_get_contents('playlist.json');
+$playlist = json_decode($json_data, true);
 
-  $_SESSION['leaderboard'][] = [
-      'name' => $name,
-      'song' => $_POST['title'],
-      'points' => $_POST['points']
-  ];
-
-  header("Location: songlist.php"); 
-  exit;
-}
+usort($playlist['songs'], function($a, $b) {
+  return strcasecmp($a['title'], $b['title']);
+});
 
 ?>
 <!doctype html>
@@ -30,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Clasificaciones</title>
+    <title>Lista</title>
   </head>
   <body class="d-flex flex-column min-vh-100" style="background-image: url('/img/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">  
   
@@ -45,19 +37,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
 
   <div class="container mt-5 flex-grow-1">
     <div class="row justify-content-center">
-      <div class="col-10 text-center p-5 mb-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
-        <h1 class="display-4 mb-0">Guarda Tu Puntuacion!</h1>
-        <h2 class="display-4 mb-2"><?php echo $points; ?> Puntos en <?php echo $song; ?>!!!</h2> 
-
-        <form action="" enctype="multipart/form-data" method="post">
-          <div class="form-group">
-            <input name="name" type="text" class="form-control" id="inputname" placeholder="Pon tu nombre">
+      <div class="col-10 text-center p-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
+        <h1 class="display-4 mb-4">Lista de Canciones</h1>
+  
+          <div class="list-group" style="max-height: 344px; overflow-y: auto; padding-right: 10px;">
+            <!-- Song list Cycles songs -->
+            <?php foreach ($playlist['songs'] as $song): ?>
+              <!-- Buton that redirects to form -->
+              <a href="/mvc/game.php" class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;"
+              onclick="event.preventDefault(); document.getElementById('songForm<?php echo $song['game']; ?>').submit();">
+              <!-- Info of the songs -->
+              <img src="<?php echo $song['img']; ?>" alt="SongImg" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 10px;">
+              <strong style="font-size:x-large;"><?php echo $song['title']; ?></strong> por <?php echo $song['artist']; ?> <?php echo $song['duration']; ?>
+              </a>
+              <!-- Form that sends the info to game.php -->
+              <form id="songForm<?php echo $song['game']; ?>" action="/mvc/game.php" method="POST" style="display: none;">
+                <input type="hidden" name="song" value='<?php echo json_encode($song); ?>'>
+              </form>
+            <?php endforeach; ?>
           </div>
-
-          <input type="hidden" id="title" name="title" value="<?php echo $song; ?>">
-          <input type="hidden" id="points" name="points" value="<?php echo $points; ?>">
-          <button href="/mvc/songlist.php" type="submit" class="btn btn-primary">Enviar</button>
-        </form>
 
       </div>
     </div>
@@ -78,7 +76,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
 </html>
-<script>
-        document.getElementById('points').value = "<?php echo $points; ?>";
-        document.getElementById('title').value = "<?php echo $song; ?>";
-</script>

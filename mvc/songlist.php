@@ -1,7 +1,6 @@
 <?php
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-include "config.php";
 $error = $_GET["error"];
 
 $json_data = file_get_contents('playlist.json');
