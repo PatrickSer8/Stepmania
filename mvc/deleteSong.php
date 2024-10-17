@@ -10,6 +10,9 @@ $song = json_decode($_POST['song'], true);
     $songDuration = $song['duration'];
     $songImg = $song['img'];
 
+    unlink($songMusic);
+    unlink($songGame);
+    unlink($songImg);
 
     foreach ($jsonData['songs'] as $index => $entry) {
         if (
