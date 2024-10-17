@@ -50,24 +50,24 @@ usort($playlist['songs'], function($a, $b) {
               
               <!-- Info of the songs -->
               <img src="<?php echo $song['img']; ?>" alt="SongImg" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 10px;">
-              <strong style="font-size:x-large; cursor: pointer;" onclick="event.preventDefault(); document.getElementById('songForm<?php echo $song['game']; ?>').submit();" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"
+              <strong style="font-size:x-large; cursor: pointer;" onclick="event.preventDefault(); document.getElementById('songForm<?php echo $song['game']; ?><?php echo $song['title']; ?><?php echo $song['artist']; ?><?php echo $song['duration']; ?>').submit();" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"
               ><?php echo $song['title']; ?></strong> por <?php echo $song['artist']; ?> <?php echo $song['duration']; ?>
               
               <p style="cursor: pointer; color: blue; display: inline-block; margin-left: 10px;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"
-              onclick="event.preventDefault(); document.getElementById('editSong<?php echo $song['game']; ?>').submit();">Editar</p>
+              onclick="event.preventDefault(); document.getElementById('editSong<?php echo $song['game']; ?><?php echo $song['title']; ?><?php echo $song['artist']; ?><?php echo $song['duration']; ?>').submit();">Editar</p>
               <p style="cursor: pointer; color: red; display: inline-block; margin-left: 10px;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"
-              onclick="event.preventDefault(); document.getElementById('deleteSong<?php echo $song['game']; ?>').submit();">Eliminar</p>
+              onclick="event.preventDefault(); document.getElementById('deleteSong<?php echo $song['game']; ?><?php echo $song['title']; ?><?php echo $song['artist']; ?><?php echo $song['duration']; ?>').submit();">Eliminar</p>
               </a>
               <!-- Form that sends the info to game.php -->
-              <form id="songForm<?php echo $song['game']; ?>" action="/mvc/game.php" method="POST" style="display: none;">
+              <form id="songForm<?php echo $song['game']; ?><?php echo $song['title']; ?><?php echo $song['artist']; ?><?php echo $song['duration']; ?>" action="/mvc/game.php" method="POST" style="display: none;">
                 <input type="hidden" name="song" value='<?php echo json_encode($song); ?>'>
               </form>
               <!-- Form that deletes song -->
-              <form id="deleteSong<?php echo $song['game']; ?>" action="/mvc/deleteSong.php" method="POST" style="display: none;">
+              <form id="deleteSong<?php echo $song['game']; ?><?php echo $song['title']; ?><?php echo $song['artist']; ?><?php echo $song['duration']; ?>" action="/mvc/deleteSong.php" method="POST" style="display: none;">
                 <input type="hidden" name="song" value='<?php echo json_encode($song); ?>'>
               </form>
               <!-- Form that edits song -->
-              <form id="editSong<?php echo $song['game']; ?>" action="/mvc/editSong.php" method="POST" style="display: none;">
+              <form id="editSong<?php echo $song['game']; ?><?php echo $song['title']; ?><?php echo $song['artist']; ?><?php echo $song['duration']; ?>" action="/mvc/editSong.php" method="POST" style="display: none;">
                 <input type="hidden" name="song" value='<?php echo json_encode($song); ?>'>
               </form>
             <?php endforeach; ?>
