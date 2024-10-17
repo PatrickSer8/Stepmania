@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
 
   $_SESSION['leaderboard'][] = [
       'name' => $name,
-      'song' => $_POST['title'],
+      'song' => $_POST['song'],
       'points' => $_POST['points']
   ];
 
@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
             <input name="name" type="text" class="form-control" id="inputname" placeholder="Pon tu nombre">
           </div>
 
-          <input type="hidden" id="title" name="title" value="<?php echo $song; ?>">
-          <input type="hidden" id="points" name="points" value="<?php echo $points; ?>">
+          <input type="hidden" id="points" name="points">
+          <input type="hidden" id="song" name="song">
           <button href="/mvc/songlist.php" type="submit" class="btn btn-primary">Enviar</button>
         </form>
 
@@ -79,6 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
   </body>
 </html>
 <script>
-        document.getElementById('points').value = "<?php echo $points; ?>";
-        document.getElementById('title').value = "<?php echo $song; ?>";
+        document.getElementById('song').value = "<?php echo $song; ?>";
+        document.getElementById('points').value = parseFloat("<?php echo $points; ?>");
 </script>

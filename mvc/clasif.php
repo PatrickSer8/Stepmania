@@ -1,16 +1,16 @@
 <?php
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-include "config.php";
 $error = $_GET["error"];
 
-$json_data = file_get_contents('playlist.json');
-$playlist = json_decode($json_data, true);
+session_start();
 
-usort($playlist['songs'], function($a, $b) {
-  return strcasecmp($a['title'], $b['title']);
+$recententry = end($_SESSION['leaderboard']);
+$sortedLB = $_SESSION['leaderboard'];
+
+usort($sortedLB, function($a, $b) {
+  return $b['points'] - $a['points'];
 });
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,24 +38,19 @@ usort($playlist['songs'], function($a, $b) {
   <div class="container mt-5 flex-grow-1">
     <div class="row justify-content-center">
       <div class="col-10 text-center p-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
-        <h1 class="display-4 mb-4">Lista de Canciones</h1>
+        <h1 class="display-4 mb-1">Tabla de Clasificaciones</h1>
   
-          <div class="list-group" style="max-height: 344px; overflow-y: auto; padding-right: 10px;">
-            <!-- Song list Cycles songs -->
-            <?php foreach ($playlist['songs'] as $song): ?>
-              <!-- Buton that redirects to form -->
-              <a href="/mvc/game.php" class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;"
-              onclick="event.preventDefault(); document.getElementById('songForm<?php echo $song['game']; ?>').submit();">
-              <!-- Info of the songs -->
-              <img src="<?php echo $song['img']; ?>" alt="SongImg" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 10px;">
-              <strong style="font-size:x-large;"><?php echo $song['title']; ?></strong> por <?php echo $song['artist']; ?> <?php echo $song['duration']; ?>
+          <div class="list-group" style="max-height: 354px; overflow-y: auto; padding-right: 10px;">
+
+            <?php foreach ($sortedLB as $entry): ?>
+              <a class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;">
+                <strong style="font-size:x-large;"><?php echo $entry['points']; ?></strong> Puntos por <?php echo $entry['name']; ?> en <?php echo $entry['song']; ?>
               </a>
-              <!-- Form that sends the info to game.php -->
-              <form id="songForm<?php echo $song['game']; ?>" action="/mvc/game.php" method="POST" style="display: none;">
-                <input type="hidden" name="song" value='<?php echo json_encode($song); ?>'>
-              </form>
             <?php endforeach; ?>
           </div>
+          <a class="list-group-item list-group-item-action" style=" border: 0px; margin-bottom: 0px; background-color:transparent; font-size: small;">
+            Partida mas reciente: <strong style="font-size: small;"><?php echo $recententry['points']; ?></strong> Puntos por <?php echo $recententry['name']; ?> en <?php echo $recententry['song']; ?>
+          </a>
 
       </div>
     </div>
