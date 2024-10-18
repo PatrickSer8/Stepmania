@@ -4,13 +4,20 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $error = $_GET["error"];
 
 session_start();
+//if so the page doesnt crash when the leaderboard is empty
+if (isset($_SESSION['leaderboard']) && !empty($_SESSION['leaderboard'])) {
 
 $recententry = end($_SESSION['leaderboard']);
 $sortedLB = $_SESSION['leaderboard'];
 //sorts the scores by higher points
 usort($sortedLB, function($a, $b) {
   return $b['points'] - $a['points'];
-});
+
+}); 
+} else {
+  $recententry = null;
+  $sortedLB = [];
+}
 ?>
 <!doctype html>
 <html lang="en">
