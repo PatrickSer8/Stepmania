@@ -3,7 +3,11 @@
 session_start();
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $error = $_GET["error"];
+if (isset($_POST['points']) && !empty($_POSt['points'])) {
+
+
 $points = $_POST['points'];
+} else {$points = 1;}
 $song = $_POST['song'];
 $numnotes = $_POST['numnotes'];
 $percentage = 0;
