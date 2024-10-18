@@ -49,11 +49,11 @@ $song = json_decode($_POST['song'], true);
           <form action="formedit.php" enctype="multipart/form-data" method="post">
     <div class="form-group">
         <label for="inputtitulo">Titulo</label>
-        <input value="<?php echo $songTitle; ?>" name="title" type="text" class="form-control" id="inputtitol" placeholder="El nombre de la cancion">
+        <input value="<?php echo $songTitle; ?>" name="title" type="text" class="form-control" id="inputtitol" placeholder="El nombre de la cancion" required>
     </div>
     <div class="form-group">
         <label for="inputartista">Artista</label>
-        <input value="<?php echo $songArtist; ?>" name="artist" type="text" class="form-control" id="inputartista" placeholder="El nombre del artista">
+        <input value="<?php echo $songArtist; ?>" name="artist" type="text" class="form-control" id="inputartista" placeholder="El nombre del artista" required>
     </div>
     <div class="form-group">
         <label for="inputmusica">Musica</label>

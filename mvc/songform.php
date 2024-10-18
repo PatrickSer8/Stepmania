@@ -41,23 +41,23 @@ $error = $_GET["error"];
           <form action="form.php" enctype="multipart/form-data" method="post">
     <div class="form-group">
         <label for="inputtitulo">Titulo</label>
-        <input name="title" type="text" class="form-control" id="inputtitol" placeholder="El nombre de la cancion">
+        <input name="title" type="text" class="form-control" id="inputtitol" placeholder="El nombre de la cancion" required>
     </div>
     <div class="form-group">
         <label for="inputartista">Artista</label>
-        <input name="artist" type="text" class="form-control" id="inputartista" placeholder="El nombre del artista">
+        <input name="artist" type="text" class="form-control" id="inputartista" placeholder="El nombre del artista" required>
     </div>
     <div class="form-group">
         <label for="inputmusica">Musica</label>
-        <input name="music" type="file" class="form-control" id="inputmusica" placeholder="El archivo de la musica" onchange="getAudioDuration(event)">
+        <input name="music" type="file" class="form-control" id="inputmusica" placeholder="El archivo de la musica" onchange="getAudioDuration(event)" required>
     </div>
     <div class="form-group">
         <label for="inputimage">Portada</label>
-        <input name="img" type="file" class="form-control" id="inputimage" placeholder="La portada">
+        <input name="img" type="file" class="form-control" id="inputimage" placeholder="La portada" required>
     </div>
     <div class="form-group">
         <label for="inputgame">Juego</label>
-        <input name="game" type="file" class="form-control" id="inputgame" placeholder="El archivo del juego">
+        <input name="game" type="file" class="form-control" id="inputgame" placeholder="El archivo del juego" required>
     </div>
     <input type="hidden" id="songduration" name="songduration" value="">
     <button href="/mvc/songlist.php" type="submit" class="btn btn-primary">Enviar</button>

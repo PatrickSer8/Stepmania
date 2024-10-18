@@ -31,6 +31,7 @@ $song = json_decode($_POST['song'], true);
   <form id="clasif" action="clasifrequest.php" method="POST" style="display: none;">
     <input id="points-input" type="hidden" name="points">
     <input id="song-title" type="hidden" name="song">
+    <input id="num-notes" type="hidden" name="numnotes">
   </form>
   <nav class="navbar navbar-dark justify-content-md-center" style="background-color: #E6E6E6; border: 3px solid black; padding: 20px 0;">
     <div class="d-flex">
@@ -356,6 +357,7 @@ $song = json_decode($_POST['song'], true);
 
     if (currentTime >= duration) {
     document.getElementById('song-title').value = "<?php echo $songTitle; ?>";
+    document.getElementById('num-notes').value = numberOfNotes;
     event.preventDefault(); 
     document.getElementById('clasif').submit();    
   }

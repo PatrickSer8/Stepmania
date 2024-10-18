@@ -5,6 +5,22 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $error = $_GET["error"];
 $points = $_POST['points'];
 $song = $_POST['song'];
+$numnotes = $_POST['numnotes'];
+$percentage = 0;
+if ($numnotes > 0) { 
+  $percentage = ($points / ($numnotes * 100)) * 100;
+}$score = "E";
+if ($percentage < 25) {
+  $score = "E";
+  } elseif ($percentage < 50) {
+    $score = "D";
+  } elseif ($percentage < 70) {
+    $score = "C";
+  } elseif ($percentage < 90) {
+    $score = "B";
+  } else {
+    $score = "A";
+  }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_POST['name'])) {
   $name = $_POST['name'];
@@ -12,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
   $_SESSION['leaderboard'][] = [
       'name' => $name,
       'song' => $_POST['song'],
-      'points' => $_POST['points']
+      'points' => $_POST['points'],
+      'score' => $_POST['score']
   ];
 
   header("Location: songlist.php"); 
@@ -48,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
       <div class="col-10 text-center p-5 mb-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
         <h1 class="display-4 mb-0">Guarda Tu Puntuacion!</h1>
         <h2 class="display-4 mb-2"><?php echo $points; ?> Puntos en <?php echo $song; ?>!!!</h2> 
-
+        <h1 class="display-4 mb-0" style="font-size: 5rem; color: gold; font-family: 'Arial', sans-serif; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);"><?php echo $score; ?></h1>
         <form action="" enctype="multipart/form-data" method="post">
           <div class="form-group">
             <input name="name" type="text" class="form-control" id="inputname" placeholder="Pon tu nombre">
@@ -56,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
 
           <input type="hidden" id="points" name="points">
           <input type="hidden" id="song" name="song">
+          <input type="hidden" id="score" name="score">
           <button href="/mvc/songlist.php" type="submit" class="btn btn-primary">Enviar</button>
         </form>
 
@@ -81,4 +99,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && !empty($_PO
 <script>
         document.getElementById('song').value = "<?php echo $song; ?>";
         document.getElementById('points').value = parseFloat("<?php echo $points; ?>");
+        document.getElementById('score').value = "<?php echo $score; ?>";
 </script>

@@ -44,12 +44,12 @@ usort($sortedLB, function($a, $b) {
 
             <?php foreach ($sortedLB as $entry): ?>
               <a class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;">
-                <strong style="font-size:x-large;"><?php echo $entry['points']; ?></strong> Puntos por <?php echo $entry['name']; ?> en <?php echo $entry['song']; ?>
+                <strong style="font-size:x-large;"><?php echo $entry['score']; ?> <?php echo $entry['points']; ?></strong> Puntos por <?php echo $entry['name']; ?> en <?php echo $entry['song']; ?>
               </a>
             <?php endforeach; ?>
           </div>
           <a class="list-group-item list-group-item-action" style=" border: 0px; margin-bottom: 0px; background-color:transparent; font-size: small;">
-            Partida mas reciente: <strong style="font-size: small;"><?php echo $recententry['points']; ?></strong> Puntos por <?php echo $recententry['name']; ?> en <?php echo $recententry['song']; ?>
+            Partida mas reciente: <strong style="font-size: small;"><?php echo $entry['score']; ?> <?php echo $recententry['points']; ?></strong> Puntos por <?php echo $recententry['name']; ?> en <?php echo $recententry['song']; ?>
           </a>
 
       </div>
