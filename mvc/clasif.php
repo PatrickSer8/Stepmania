@@ -7,7 +7,7 @@ session_start();
 
 $recententry = end($_SESSION['leaderboard']);
 $sortedLB = $_SESSION['leaderboard'];
-
+//sorts the scores by higher points
 usort($sortedLB, function($a, $b) {
   return $b['points'] - $a['points'];
 });
@@ -22,7 +22,7 @@ usort($sortedLB, function($a, $b) {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Lista</title>
+    <title>Tabla de clasificaciones</title>
   </head>
   <body class="d-flex flex-column min-vh-100" style="background-image: url('/img/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">  
   
@@ -41,13 +41,14 @@ usort($sortedLB, function($a, $b) {
         <h1 class="display-4 mb-1">Tabla de Clasificaciones</h1>
   
           <div class="list-group" style="max-height: 354px; overflow-y: auto; padding-right: 10px;">
-
+            <!--lists the scores -->
             <?php foreach ($sortedLB as $entry): ?>
               <a class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;">
                 <strong style="font-size:x-large;"><?php echo $entry['score']; ?> <?php echo $entry['points']; ?></strong> Puntos por <?php echo $entry['name']; ?> en <?php echo $entry['song']; ?>
               </a>
             <?php endforeach; ?>
           </div>
+          <!-- shows the most recent game-->
           <a class="list-group-item list-group-item-action" style=" border: 0px; margin-bottom: 0px; background-color:transparent; font-size: small;">
             Partida mas reciente: <strong style="font-size: small;"><?php echo $entry['score']; ?> <?php echo $recententry['points']; ?></strong> Puntos por <?php echo $recententry['name']; ?> en <?php echo $recententry['song']; ?>
           </a>

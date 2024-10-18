@@ -17,7 +17,7 @@ $imageFilePath = "../img/" . $_FILES["img"]["name"];
 $gameFilePath = "../game/" . $_FILES["game"]["name"];
 $songduration = $_POST["songduration"];
 
-
+//checks if there was a new file added and that its not the same then uploads the new one or keeps the old one
 if (!empty($_FILES["music"]["name"]) && $musicFilePath !== $ogmusic) {
     unlink($ogmusic);
     move_uploaded_file($_FILES["music"]["tmp_name"], "../music/" . $_FILES["music"]["name"]);
@@ -50,7 +50,7 @@ $data = array(
 );
 
 $jsonData = json_decode(file_get_contents("playlist.json"), true);
-
+//deletes the old data
 foreach ($jsonData['songs'] as $index => $entry) {
     if (
         $entry['music'] === $ogmusic &&

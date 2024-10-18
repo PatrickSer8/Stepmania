@@ -6,7 +6,7 @@ $error = $_GET["error"];
 
 $json_data = file_get_contents('playlist.json');
 $playlist = json_decode($json_data, true);
-
+//filters song list alphabeically
 usort($playlist['songs'], function($a, $b) {
   return strcasecmp($a['title'], $b['title']);
 });
@@ -48,11 +48,11 @@ usort($playlist['songs'], function($a, $b) {
               <!-- Buton that redirects to form -->
               <a class="list-group-item list-group-item-action" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px;">
               
-              <!-- Info of the songs -->
+              <!-- Info of the songs, also on click on the name it sends to play the game through a form -->
               <img src="<?php echo $song['img']; ?>" alt="SongImg" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 10px;">
               <strong style="font-size:x-large; cursor: pointer;" onclick="event.preventDefault(); document.getElementById('songForm<?php echo $song['game']; ?><?php echo $song['title']; ?><?php echo $song['artist']; ?><?php echo $song['duration']; ?>').submit();" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"
               ><?php echo $song['title']; ?></strong> por <?php echo $song['artist']; ?> <?php echo $song['duration']; ?>
-              
+              <!--edit and delete buttons -->
               <p style="cursor: pointer; color: blue; display: inline-block; margin-left: 10px;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"
               onclick="event.preventDefault(); document.getElementById('editSong<?php echo $song['game']; ?><?php echo $song['title']; ?><?php echo $song['artist']; ?><?php echo $song['duration']; ?>').submit();">Editar</p>
               <p style="cursor: pointer; color: red; display: inline-block; margin-left: 10px;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"

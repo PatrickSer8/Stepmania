@@ -100,7 +100,7 @@ $song = json_decode($_POST['song'], true);
 <script>
   var audio = new Audio("<?php echo $songMusic; ?>");
   var playrepeat = "yes";
-
+  //function to play the song when the user clicks(browser dont allow for the song to start automatically)
   function playsong() {
     if(playrepeat == "yes") {
     audio.play();
@@ -108,19 +108,19 @@ $song = json_decode($_POST['song'], true);
     playrepeat = "no";}}
 
   document.addEventListener('click',playsong)
-
+  //function to turn off notes when they are scored or missed
   var keypressed = "non";
   function non() {
     keypressed = "non";
   }
-
+  //function to update point in real time
   var points = 0;
   document.getElementById('points-display').textContent = points; 
   function updatePoints() {
     document.getElementById('points-input').value = points;
     document.getElementById('points-display').textContent = points;
   }
-
+  //function for each of the keys to know if the user correctly pressed or if they missed
   let leftPressed = false;
   function left() {
     if (keypressed == "left") {
@@ -217,6 +217,7 @@ $song = json_decode($_POST['song'], true);
     rightPressed = !rightPressed;
   }
 
+  //functions to turn on notes to be pressed
   function leftnote() {
     document.getElementById('left-on').src = '../img/ArrowLeftPress.png';
     keypressed = 'left';
@@ -233,7 +234,7 @@ $song = json_decode($_POST['song'], true);
     document.getElementById('right-on').src = '../img/ArrowRightPress.png';
     keypressed = 'right';
   }
-
+  //function to turn off notes if the window time ended
   function leftnotemiss() {
     document.getElementById('left-on').src = '../img/left.png';
     non();
@@ -250,7 +251,7 @@ $song = json_decode($_POST['song'], true);
     document.getElementById('right-on').src = '../img/right.png';
     non();
   }
-  
+  //functions to identify the numbers from the game file to notes
   function NoteOnIdent(note) {
       switch(note) {
         case 99:
@@ -283,7 +284,7 @@ $song = json_decode($_POST['song'], true);
           break;
       }
     }
-
+  //function to process the text from the game file
   var gameContent = `<?php echo $songGameContent; ?>`.trim();
   let gameLines = gameContent.split('\n');  
   let numberOfNotes = parseInt(gameLines[0]);
@@ -292,14 +293,14 @@ $song = json_decode($_POST['song'], true);
       let [note, on, off] = gameLines[i].split('#').map(value => parseFloat(value.trim()));
       notes.push({ note: note, on: on, off: off });
   }
-  
+  //function to activate each note from the game file
   function startgame() {
       notes.forEach((noteObj) => {
         setTimeout(() => NoteOnIdent(noteObj.note), noteObj.on * 1000);
         setTimeout(() => NoteOffIdent(noteObj.note), noteObj.off * 1000);
       });
     }
-
+  //function to identify when you press and when you let go a notes
   document.addEventListener('keydown', (event) => {
     switch (event.key) {
       case 'ArrowLeft':
@@ -341,7 +342,7 @@ $song = json_decode($_POST['song'], true);
         break;
     }
   });
-
+  //progress bar
   audio.addEventListener('timeupdate', () => {
     const currentTime = audio.currentTime;
     const duration = audio.duration;
@@ -354,7 +355,7 @@ $song = json_decode($_POST['song'], true);
     const durationDisplay = document.getElementById('cancion-duration');
     currentTimeDisplay.textContent = formatTime(currentTime);
     durationDisplay.textContent = formatTime(duration);
-
+    //when the song ends it sends the info to clasifrequest
     if (currentTime >= duration) {
     document.getElementById('song-title').value = "<?php echo $songTitle; ?>";
     document.getElementById('num-notes').value = numberOfNotes;
@@ -362,7 +363,7 @@ $song = json_decode($_POST['song'], true);
     document.getElementById('clasif').submit();    
   }
 });
-
+//format the duration in minutes
 function formatTime(timeInSeconds) {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);

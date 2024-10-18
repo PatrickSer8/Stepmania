@@ -14,7 +14,7 @@ $error = $_GET["error"];
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Afegir Canço</title>
+    <title>Añadir cancion</title>
   </head>
   <body class="d-flex flex-column min-vh-100" style="background-image: url('/img/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">  
   
@@ -26,7 +26,7 @@ $error = $_GET["error"];
     <a href="/mvc/clasif.php" class="navbar-brand mb-0 h1" style="color: black;">Clasificaciones</a>
     </div>
   </nav>
-
+  <!--from structure -->
   <div class="container mt-5 flex-grow-1">
     <div class="row justify-content-center">
       <div class="col-10 text-center p-5 mb-5" style="border: 2px solid black; background-color: #e6e6e6c2; border-radius: 10px;">
@@ -83,6 +83,7 @@ $error = $_GET["error"];
   </body>
 </html>
 <script>
+    //function to get the duration of the audio
     function getAudioDuration(event) {
         const file = event.target.files[0];
         if (file) {

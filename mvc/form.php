@@ -1,22 +1,22 @@
 <pre>
 <?php
-
+//file to procees the add songs form
 print_r($_POST);
 
 print_r($_FILES);
 
  print_r(getcwd());
-
+//stablishes file paths
 $musicFilePath = "../music/" . $_FILES["music"]["name"];
 $imageFilePath = "../img/" . $_FILES["img"]["name"];
 $gameFilePath = "../game/" . $_FILES["game"]["name"];
-
+//stores files
 move_uploaded_file($_FILES["music"]["tmp_name"], "../music/" . $_FILES["music"]["name"]);
 move_uploaded_file($_FILES["img"]["tmp_name"], "../img/" . $_FILES["img"]["name"]);
 move_uploaded_file($_FILES["game"]["tmp_name"], "../game/" . $_FILES["game"]["name"]);
 
 $songduration = $_POST["songduration"];
-
+//store the info in .json
 $data = array(
     "title" => $_POST["title"],
     "artist" => $_POST["artist"],

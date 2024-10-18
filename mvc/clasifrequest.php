@@ -7,6 +7,7 @@ $points = $_POST['points'];
 $song = $_POST['song'];
 $numnotes = $_POST['numnotes'];
 $percentage = 0;
+//calculates the score based on the points and the maximum score
 if ($numnotes > 0) { 
   $percentage = ($points / ($numnotes * 100)) * 100;
 }$score = "E";

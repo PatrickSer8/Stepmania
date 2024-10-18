@@ -9,11 +9,11 @@ $song = json_decode($_POST['song'], true);
     $songGame = $song['game'];
     $songDuration = $song['duration'];
     $songImg = $song['img'];
-
+    //deletes the files
     unlink($songMusic);
     unlink($songGame);
     unlink($songImg);
-
+    //finds the data and deletes it from the json file
     foreach ($jsonData['songs'] as $index => $entry) {
         if (
             $entry['title'] === $songTitle &&

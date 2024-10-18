@@ -22,7 +22,7 @@ $song = json_decode($_POST['song'], true);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Afegir Canço</title>
+    <title>Añadir Cancion</title>
   </head>
   <body class="d-flex flex-column min-vh-100" style="background-image: url('/img/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">  
   
@@ -68,7 +68,7 @@ $song = json_decode($_POST['song'], true);
         <input name="game" type="file" class="form-control" id="inputgame" placeholder="El archivo del juego">
     </div>
     <input type="hidden" id="songduration" name="songduration" value="">
-    
+    <!--data before the edit -->
     <input type="hidden" id="ogmusic" name="ogmusic" value="<?php echo $songMusic; ?>">
     <input type="hidden" id="ogimg" name="ogimg" value="<?php echo $songImg; ?>">
     <input type="hidden" id="oggame" name="oggame" value="<?php echo $songGame; ?>">
